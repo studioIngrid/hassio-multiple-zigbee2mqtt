@@ -4,7 +4,7 @@ Home Assistant *does* allow you to run multiple Zigbee2MQTT add-ons, but setting
 
 This add-on exists for one simple reason: to make that experience smoother.
 
-It acts as a small configuration wrapper around `hassio-zigbee2mqtt/zigbee2mqtt` and will **only change the add-on name** .
+It acts as a small configuration wrapper around `hassio-zigbee2mqtt/zigbee2mqtt` and will **only change the add-on name**.
 No behavior is changed.
 
 🔗 For the Zigbee2MQTT project itself, visit the developer’s GitHub:
