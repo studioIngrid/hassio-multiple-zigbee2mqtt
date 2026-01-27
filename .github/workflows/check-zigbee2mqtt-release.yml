@@ -1,0 +1,42 @@
+name: Check for New Zigbee2MQTT Release
+
+on:
+  schedule:
+    - cron: "0 * * * *"  # Runs every hour
+  workflow_dispatch:  # Allows manual execution
+
+jobs:
+  check-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get Latest Release from zigbee2mqtt/hassio-zigbee2mqtt
+        id: check_release
+        run: |
+          LATEST_RELEASE=$(curl -s https://api.github.com/repos/zigbee2mqtt/hassio-zigbee2mqtt/releases/latest | jq -r '.tag_name' || echo "none")
+          echo "Latest release tag: $LATEST_RELEASE"
+          echo "LATEST_TAG=$LATEST_RELEASE" >> $GITHUB_ENV
+          echo "TRIGGER=false" >> $GITHUB_ENV
+
+      - name: Get Last Processed Release
+        id: get_last_release
+        run: |
+          LAST_PROCESSED=$(curl -s "https://api.github.com/repos/${{ github.repository }}/releases/latest" | jq -r '.tag_name' || echo "none")
+          echo "Last processed tag: $LAST_PROCESSED"
+          echo "LAST_PROCESSED_TAG=$LAST_PROCESSED" >> $GITHUB_ENV
+
+      - name: Compare Releases
+        if: env.LATEST_TAG != '' && env.LATEST_TAG != 'null' && env.LATEST_TAG != 'none' && env.LAST_PROCESSED_TAG != '' && env.LAST_PROCESSED_TAG != 'null' && env.LAST_PROCESSED_TAG != 'none' && env.LATEST_TAG != env.LAST_PROCESSED_TAG
+        run: |
+          echo "New release detected: $LATEST_TAG, last processed: $LAST_PROCESSED"
+          echo "TRIGGER=true" >> $GITHUB_ENV
+
+      - name: Checkout repository
+        if: env.TRIGGER == 'true'
+        uses: actions/checkout@v3
+
+      - name: Trigger Update Workflow
+        if: env.TRIGGER == 'true'
+        run: |
+          gh workflow run sync-zigbee2mqtt-config.yml -f release_tag="$LATEST_TAG"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

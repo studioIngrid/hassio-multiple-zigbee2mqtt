@@ -1,0 +1,5 @@
+{
+  "name": "Home Assistant Add-on: Multiple Zigbee2MQTT",
+  "url": "https://github.com/studioIngrid/hassio-multiple-zigbee2mqtt",
+  "maintainer": "studioIngrid <dev@studioilb.nl>"
+}

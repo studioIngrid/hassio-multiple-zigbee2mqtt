@@ -1,0 +1,43 @@
+name: Sync Zigbee2MQTT Config and Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      release_tag:
+        description: "Release Tag to Sync"
+        required: true
+
+jobs:
+  update-config:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Fetch the latest config.json
+        run: |
+          curl -o config.json https://raw.githubusercontent.com/zigbee2mqtt/hassio-zigbee2mqtt/master/zigbee2mqtt/config.json
+
+      - name: Modify config.json for hub
+        run: |
+          jq '.name = "Zigbee2MQTT HUB" | .slug = "zigbee2mqtt-hub"' config.json > temp1.json && mv temp1.json zigbee2mqtt-hub/config.json
+
+      - name: Modify config.json for dev
+        run: |
+          jq '.name = "Zigbee2MQTT DEV" | .slug = "zigbee2mqtt-dev"' config.json > temp2.json && mv temp2.json zigbee2mqtt-dev/config.json
+
+      - name: Commit changes
+        run: |
+          git config --global user.name 'github-actions'
+          git config --global user.email 'github-actions@github.com'
+          git add zigbee2mqtt-hub/config.json
+          git add zigbee2mqtt-dev/config.json
+          git commit -m "Update config.json files for new release"
+          git push
+
+      - name: Create GitHub release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          TAG_NAME="${{ github.event.inputs.release_tag }}"
+          gh release create "$TAG_NAME" --title "$TAG_NAME" --notes "Automated release for Zigbee2MQTT HUB"
