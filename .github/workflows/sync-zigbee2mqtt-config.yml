@@ -18,13 +18,15 @@ jobs:
         run: |
           curl -o config.json https://raw.githubusercontent.com/zigbee2mqtt/hassio-zigbee2mqtt/master/zigbee2mqtt/config.json
 
-      - name: Modify config.json for hub
+      - name: Modify config.json
         run: |
           jq '.name = "Zigbee2MQTT HUB" | .slug = "zigbee2mqtt-hub"' config.json > temp1.json && mv temp1.json zigbee2mqtt-hub/config.json
-
-      - name: Modify config.json for dev
-        run: |
           jq '.name = "Zigbee2MQTT DEV" | .slug = "zigbee2mqtt-dev"' config.json > temp2.json && mv temp2.json zigbee2mqtt-dev/config.json
+          jq '.name = "Zigbee2MQTT 1" | .slug = "zigbee2mqtt_1"' config.json > temp3.json && mv temp3.json zigbee2mqtt-dev/config.json
+          jq '.name = "Zigbee2MQTT 2" | .slug = "zigbee2mqtt_2"' config.json > temp4.json && mv temp4.json zigbee2mqtt-dev/config.json
+          jq '.name = "Zigbee2MQTT 3" | .slug = "zigbee2mqtt_3"' config.json > temp5.json && mv temp5.json zigbee2mqtt-dev/config.json
+          jq '.name = "Zigbee2MQTT 4" | .slug = "zigbee2mqtt_4"' config.json > temp6.json && mv temp6.json zigbee2mqtt-dev/config.json
+          jq '.name = "Zigbee2MQTT 5" | .slug = "zigbee2mqtt_5"' config.json > temp7.json && mv temp7.json zigbee2mqtt-dev/config.json
 
       - name: Commit changes
         run: |
@@ -32,6 +34,11 @@ jobs:
           git config --global user.email 'github-actions@github.com'
           git add zigbee2mqtt-hub/config.json
           git add zigbee2mqtt-dev/config.json
+          git add zigbee2mqtt_1/config.json
+          git add zigbee2mqtt_2/config.json
+          git add zigbee2mqtt_3/config.json
+          git add zigbee2mqtt_4/config.json
+          git add zigbee2mqtt_5/config.json
           git commit -m "Update config.json files for new release"
           git push
 
