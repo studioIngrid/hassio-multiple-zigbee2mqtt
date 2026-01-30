@@ -1,7 +1,7 @@
 {
-  "name": "Zigbee2MQTT HUB",
+  "name": "Zigbee2MQTT 4",
   "version": "2.7.2-1",
-  "slug": "zigbee2mqtt-hub",
+  "slug": "zigbee2mqtt_4",
   "description": "Use your ZigBee devices without the vendor's bridge or gateway",
   "breaking_versions": [
     "2.0.0-1"
