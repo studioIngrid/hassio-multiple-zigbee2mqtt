@@ -66,8 +66,13 @@ To use WindFront, each Zigbee2MQTT instance needs a frontend port.
 
 ![Add-on store example](images/disabled_ports.png)
 
+<<<<<<< HEAD
 * Configure a **Frontend TCP listen port**, for example: \
  `8091` or `8092` or `8093`
+=======
+* Configure a **Frontend TCP listen port**, for example: /
+ `8091`, `8092`, `8093`
+>>>>>>> 7570b8cd65a1915620cd28f67296e3d41d9101dc
 
 Repeat this for **each instance**.
 
