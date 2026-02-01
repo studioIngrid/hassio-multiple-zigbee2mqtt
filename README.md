@@ -5,9 +5,9 @@ On top of that, all instances end up with the same name, which gets confusing *f
 
 This add-on exists for one simple reason: **to make that experience smoother** ✨
 
-> [!TIP] 💡
-> Got questions or feedback?
-> Find me on the Home Assistant Community: [studioIngrid](https://community.home-assistant.io/u/studioingrid)
+> [!TIP] 
+> Got questions or feedback? \
+> Find me on the Home Assistant Community: [studioIngrid](https://community.home-assistant.io/u/studioingrid) \
 > Or reply in the discussion [tread](https://community.home-assistant.io/t/add-connection-state-online-offline-to-every-z2m-device-or-other-mqtt-device)
 
 This repository acts as a **small configuration wrapper** around
