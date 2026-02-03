@@ -8,7 +8,8 @@ This add-on exists for one simple reason: **to make that experience smoother** ‚
 > [!TIP]
 > Got questions or feedback? \
 > Find me on the Home Assistant Community: [studioIngrid](https://community.home-assistant.io/u/studioingrid) \
-> Or reply in the discussion [thread](https://community.home-assistant.io/t/add-connection-state-online-offline-to-every-z2m-device-or-other-mqtt-device)
+> Or reply in the discussion [thread](https://community.home-assistant.io/t/add-connection-state-online-offline-to-every-z2m-device-or-other-mqtt-device) \
+> If you like this project, please remember to give this repo a star‚≠ê.
 
 This repository acts as a **small configuration wrapper** around
 `hassio-zigbee2mqtt/zigbee2mqtt`.
