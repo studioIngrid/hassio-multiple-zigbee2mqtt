@@ -37,8 +37,8 @@ It **only changes the add-on name**. 🚫 No behavior is modified. ✅ Zigbee2MQ
 
 ## Installation
 
-* Go to *Settings* → *Add-ons*
-* Click *Add-on Store* (bottom right)
+* Go to *Settings* → *Apps*
+* Click *Install app* (bottom right)
 * Click the *three-dot menu* (top right) → *Repositories*
 * Add the following URL:
 
@@ -74,9 +74,9 @@ Repeat this for **each instance**.
 
 ### 📦 Install WindFront
 
-* Go to *Settings → Add-ons*
+* Go to *Settings → Apps*
 
-* Click *Add-on Store*
+* Click *Install app*
 
 * Open the *three-dot menu* → *Repositories*
 
